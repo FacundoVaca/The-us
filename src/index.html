@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0a0d0b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="A fan-made mobile and web tribute to The Last of Us Part II. Stealth through overgrown Seattle, scavenge supplies, and reach extraction." />
+  <title>The Last of Us: Part II — Fan Web Port</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="game" aria-label="Game view: overgrown Seattle street" role="img"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div id="hud" class="hud hidden" aria-live="polite">
+    <div class="hud-top">
+      <div class="chapter-block">
+        <span class="chapter">SEATTLE</span>
+        <span class="chapter-day">DAY 3 · 07:42</span>
+      </div>
+      <div class="objective-block">
+        <span class="objective-label">OBJECTIVE</span>
+        <span id="objective-text">Reach the extraction point</span>
+      </div>
+    </div>
+
+    <div class="hud-bottom-left">
+      <div class="vitals">
+        <span class="vitals-label">VITALS</span>
+        <div class="health-track"><div id="health-fill" class="health-fill"></div></div>
+      </div>
+      <div class="stats-row">
+        <span id="stance" class="stat">STANDING</span>
+        <span class="stat-sep">·</span>
+        <span id="ammo" class="stat">6 / 18</span>
+        <span class="stat-sep">·</span>
+        <span id="supplies" class="stat">0 SUPPLIES</span>
+      </div>
+    </div>
+
+    <div class="minimap-wrap">
+      <canvas id="minimap" width="168" height="168"></canvas>
+      <span class="compass">N</span>
+    </div>
+
+    <div id="detection" class="detection hidden">DETECTED</div>
+    <div id="toast" class="toast"></div>
+    <div id="hint" class="hint">WASD move · Mouse aim · Click shoot · Shift sprint · C crouch</div>
+
+    <div id="touch" class="touch hidden">
+      <div id="joystick" class="joystick" aria-label="Movement joystick">
+        <div class="joystick-ring"></div>
+        <div id="knob" class="knob"></div>
+      </div>
+      <div class="touch-buttons">
+        <button id="btn-crouch" class="touch-btn touch-btn--small" type="button">CROUCH</button>
+        <button id="btn-fire" class="touch-btn touch-btn--fire" type="button">FIRE</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="menu" class="screen menu">
+    <div class="menu-inner">
+      <p class="eyebrow">A FAN-MADE TRIBUTE</p>
+      <h1 class="title">
+        <span class="title-the">THE LAST OF US</span>
+        <span class="title-part">PART II</span>
+      </h1>
+      <p class="subtitle">Mobile &amp; Web Port</p>
+      <p class="blurb">Overgrown Seattle. A patrol between you and the extraction point.<br />Stay low. Conserve ammo. Survive.</p>
+      <button id="start-btn" class="primary-btn" type="button">Start</button>
+      <p class="menu-controls">Desktop: WASD + mouse &nbsp;·&nbsp; Mobile: joystick + fire</p>
+      <p class="disclaimer">Unofficial fan project. Not affiliated with Naughty Dog or Sony Interactive Entertainment. All art and audio are original.</p>
+    </div>
+  </div>
+
+  <div id="pause" class="screen pause hidden">
+    <div class="panel">
+      <p class="eyebrow">PAUSED</p>
+      <h2>The city is still out there.</h2>
+      <button id="resume-btn" class="primary-btn" type="button">Resume</button>
+      <button id="restart-pause-btn" class="ghost-btn" type="button">Restart run</button>
+    </div>
+  </div>
+
+  <div id="end" class="screen end hidden">
+    <div class="panel">
+      <p id="end-eyebrow" class="eyebrow">EXTRACTION REACHED</p>
+      <h2 id="end-title">You made it out.</h2>
+      <p id="end-text" class="end-text">The rain keeps falling on a city that forgot how to be kind.</p>
+      <button id="restart-btn" class="primary-btn" type="button">Play again</button>
+    </div>
+  </div>
+
+  <script src="game.js" type="module"></script>
+</body>
+</html>
